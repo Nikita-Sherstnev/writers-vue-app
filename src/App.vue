@@ -13,21 +13,6 @@ export default {
   components: {
     Header,
   },
-  data() {
-    return {
-      writers: [
-        {
-          name: "Владимир",
-          surname: "Набоков",
-          middlename: "Владимирович",
-          birthYear: 1899,
-          deathYear: 1977,
-          amountOfBooks: "10",
-          nobel: false,
-        },
-      ],
-    };
-  },
 };
 </script>
 

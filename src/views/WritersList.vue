@@ -1,11 +1,45 @@
 <template>
   <div class="writers">
-    <div></div>
+    <h2>Писатели</h2>
+    <div
+    v-for="writer in allWriters"
+    :key="writer.id"
+    class="writer"
+    >
+    {{ writer.surname }}
+    {{ writer.name }}
+    {{ writer.middlename }}
+    <br>
+    Годы жизни: {{ writer.birthYear }} - {{ writer.deathYear }}<br>
+    Количество произведений: {{ writer.amountOfBooks }}<br>
+    Нобелевская премия: <span v-if="writer.nobel==true">Есть</span><span v-else>Нет</span><br>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  
+  name: "WritersList",
+  computed: mapGetters(["allWriters"]),
+
 }
 </script>
+
+<style scoped>
+.writers {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+.writer {
+  border: 1px solid #ccc;
+  background: #a59d35;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+</style>

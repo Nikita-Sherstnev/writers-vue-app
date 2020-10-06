@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Books List</h1>
+  <div class="books">
+    <h1>Книги</h1>
   </div>
 </template>
 
