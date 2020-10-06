@@ -27,9 +27,17 @@ const getters = {
   allWriters: (state) => state.writers,
 };
 
-const actions = {};
+const actions = {
+  async deleteWriter({ commit }, id) {
+    //delete request
+    commit("removeWriter", id);
+  },
+};
 
-const mutations = {};
+const mutations = {
+  removeWriter: (state, id) =>
+    (state.writers = state.writers.filter((writer) => writer.id !== id)),
+};
 
 export default {
   state,
