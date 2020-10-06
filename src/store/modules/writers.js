@@ -9,7 +9,8 @@ const state = {
       deathYear: 1977,
       amountOfBooks: "14",
       nobel: false,
-    },{
+    },
+    {
       id: 1,
       name: "Лев",
       surname: "Толстой",
@@ -23,7 +24,7 @@ const state = {
 };
 
 const getters = {
-  allWriters: state => state.writers
+  allWriters: (state) => state.writers,
 };
 
 const actions = {};
