@@ -33,9 +33,12 @@ export default {
     AddWriter,
   },
   methods: {
-    ...mapActions(["deleteWriter"]),
+    ...mapActions(["fetchWriters", "deleteWriter"]),
   },
   computed: mapGetters(["allWriters"]),
+  created() {
+    this.fetchWriters();
+  },
 };
 </script>
 

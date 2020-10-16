@@ -19,7 +19,7 @@ def writer_list(request):
         #     writers = writers.filter(title__icontains=title)
 
         writers_serializer = WriterSerializer(writers, many=True)
-        return JsonResponse(writer.data, safe=False)
+        return JsonResponse(writers_serializer.data, safe=False)
         # 'safe=False' for objects serialization
 
     elif request.method == 'POST':

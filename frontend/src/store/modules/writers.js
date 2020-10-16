@@ -1,3 +1,7 @@
+import axios from "axios";
+
+const BASE_URL = "http://127.0.0.1:8080";
+
 const state = {
   writers: [
     {
@@ -28,6 +32,11 @@ const getters = {
 };
 
 const actions = {
+  async fetchWriters({ commit }) {
+    const response = await axios.get(`${BASE_URL}/api/writers`);
+
+    commit("setWriters", response.data);
+  },
   async addWriter(
     { commit },
     surname,
@@ -48,6 +57,7 @@ const actions = {
 };
 
 const mutations = {
+  setWriters: (state, writers) => (state.writers = writers),
   newWriter: (state, writer) => state.writers.unshift(writer),
   removeWriter: (state, id) =>
     (state.writers = state.writers.filter((writer) => writer.id !== id)),
