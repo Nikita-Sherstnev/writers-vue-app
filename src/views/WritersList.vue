@@ -1,12 +1,14 @@
 <template>
   <div class="writers">
     <h1>Писатели</h1>
-
+    <AddWriter />
     <div v-for="writer in allWriters" :key="writer.id" class="writer">
       <div class="info">
-        {{ writer.surname }}
-        {{ writer.name }}
-        {{ writer.middlename }}
+        <span class="name">
+          {{ writer.surname }}
+          {{ writer.name }}
+          {{ writer.middlename }}
+        </span>
         <br />
         Годы жизни: {{ writer.birthYear }} - {{ writer.deathYear }}<br />
         Количество произведений: {{ writer.amountOfBooks }}<br />
@@ -22,10 +24,14 @@
 </template>
 
 <script>
+import AddWriter from "@/components/AddWriter.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "WritersList",
+  components: {
+    AddWriter,
+  },
   methods: {
     ...mapActions(["deleteWriter"]),
   },
@@ -47,6 +53,9 @@ export default {
   border-radius: 5px;
   text-align: center;
   position: relative;
+}
+.name {
+  font-weight: bold;
 }
 .info {
   width: 80%;
