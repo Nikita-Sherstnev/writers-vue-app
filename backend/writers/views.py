@@ -28,7 +28,7 @@ def writer_list(request):
         if writer_serializer.is_valid():
             writer_serializer.save()
             return JsonResponse(writer_serializer.data, status=status.HTTP_201_CREATED)
-        return JsonResponse(twriter_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return JsonResponse(writer_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         count = Writer.objects.all().delete()
