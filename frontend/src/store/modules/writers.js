@@ -47,11 +47,20 @@ const actions = {
     nobel
   ) {
     // post request
+    const response = await axios.post(`${BASE_URL}/api/writers`, {
+      surname: surname,
+      name: name,
+      middlename: middlename,
+      birthYear: birthYear,
+      deathYear: deathYear,
+      nobel: nobel,
+    });
 
-    commit("newWriter", surname, name, middlename, birthYear, deathYear, nobel);
+    commit("newWriter", response.data);
   },
   async deleteWriter({ commit }, id) {
-    //delete request
+    await axios.delete(`${BASE_URL}/api/writers/${id}`);
+
     commit("removeWriter", id);
   },
 };

@@ -42,7 +42,6 @@ export default {
   data() {
     return {
       writer: {
-        id: null,
         surname: "",
         name: "",
         middlename: "",
