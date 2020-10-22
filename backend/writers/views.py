@@ -25,8 +25,10 @@ def writer_list(request):
     elif request.method == 'POST':
         writer_data = JSONParser().parse(request)
         writer_serializer = WriterSerializer(data=writer_data)
+
         if writer_serializer.is_valid():
             writer_serializer.save()
+            print(writer_serializer.data)
             return JsonResponse(writer_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(writer_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

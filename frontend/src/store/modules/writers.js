@@ -3,28 +3,7 @@ import axios from "axios";
 const BASE_URL = "http://127.0.0.1:8080";
 
 const state = {
-  writers: [
-    {
-      id: 0,
-      surname: "Набоков",
-      name: "Владимир",
-      middlename: "Владимирович",
-      birthYear: 1899,
-      deathYear: 1977,
-      amountOfBooks: "14",
-      nobel: false,
-    },
-    {
-      id: 1,
-      surname: "Толстой",
-      name: "Лев",
-      middlename: "Николаевич",
-      birthYear: 1828,
-      deathYear: 1910,
-      amountOfBooks: "33",
-      nobel: false,
-    },
-  ],
+  writers: [],
 };
 
 const getters = {
@@ -37,24 +16,8 @@ const actions = {
 
     commit("setWriters", response.data);
   },
-  async addWriter(
-    { commit },
-    surname,
-    name,
-    middlename,
-    birthYear,
-    deathYear,
-    nobel
-  ) {
-    // post request
-    const response = await axios.post(`${BASE_URL}/api/writers`, {
-      surname: surname,
-      name: name,
-      middlename: middlename,
-      birthYear: birthYear,
-      deathYear: deathYear,
-      nobel: nobel,
-    });
+  async addWriter({ commit }, data) {
+    const response = await axios.post(`${BASE_URL}/api/writers`, data);
 
     commit("newWriter", response.data);
   },

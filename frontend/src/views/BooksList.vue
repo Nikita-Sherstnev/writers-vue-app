@@ -3,7 +3,7 @@
     <h1>Книги</h1>
     <div v-for="book in allBooks" :key="book.id" class="book">
       <h3>{{ book.title }}</h3>
-      {{ book.year }}
+      {{ book.year }}<br />
       {{ book.pages }}
     </div>
   </div>

@@ -55,14 +55,15 @@ export default {
     ...mapActions(["addWriter"]),
     onSubmit(e) {
       e.preventDefault();
-      this.addWriter(
-        this.writer.surname,
-        this.writer.name,
-        this.writer.middlename,
-        this.writer.birthYear,
-        this.writer.deathYear,
-        this.writer.nobel
-      );
+
+      this.addWriter({
+        surname: this.writer.surname,
+        name: this.writer.name,
+        middlename: this.writer.middlename,
+        birthYear: this.writer.birthYear,
+        deathYear: this.writer.deathYear,
+        nobel: this.writer.nobel,
+      });
     },
   },
 };

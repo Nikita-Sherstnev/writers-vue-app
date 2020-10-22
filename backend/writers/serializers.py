@@ -6,11 +6,11 @@ class WriterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Writer
-        fields = ('id',
+        fields = ['id',
                   'surname',
                   'name',
                   'middlename',
                   'birthYear',
-                  'birthYear',
+                  'deathYear',
                   'amountOfBooks',
-                  'nobel')
+                  'nobel']
