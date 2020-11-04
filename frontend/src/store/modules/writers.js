@@ -26,6 +26,14 @@ const actions = {
 
     commit("removeWriter", id);
   },
+  async updateTodo({ commit }, updWriter) {
+    const response = await axios.put(
+      `https://jsonplaceholder.typicode.com/todos/${updWriter.id}`,
+      updWriter
+    );
+
+    commit("updateWriter", response.data);
+  },
 };
 
 const mutations = {
@@ -33,6 +41,14 @@ const mutations = {
   newWriter: (state, writer) => state.writers.unshift(writer),
   removeWriter: (state, id) =>
     (state.writers = state.writers.filter((writer) => writer.id !== id)),
+  updateWriter: (state, updWriter) => {
+    const index = state.writers.findIndex(
+      (writer) => writer.id === updWriter.id
+    );
+    if (index !== -1) {
+      state.todos.splice(index, 1, updWriter);
+    }
+  },
 };
 
 export default {

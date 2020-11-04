@@ -16,7 +16,7 @@
         ><span v-else>Нет</span><br />
       </div>
       <div class="control">
-        <img src="@/assets/update.svg" />
+        <img @click="editWriter(writer.id)" src="@/assets/update.svg" />
         <img @click="deleteWriter(writer.id)" src="@/assets/delete.svg" />
       </div>
     </div>
@@ -33,7 +33,10 @@ export default {
     AddWriter,
   },
   methods: {
-    ...mapActions(["fetchWriters", "deleteWriter"]),
+    ...mapActions(["fetchWriters", "deleteWriter", "updateWriter"]),
+    editWriter(id) {
+      this.updateWriter(id);
+    },
   },
   computed: mapGetters(["allWriters"]),
   created() {
