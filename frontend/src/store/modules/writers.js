@@ -1,4 +1,3 @@
-import axios from "axios";
 import http from "../../http-common";
 
 const state = {
@@ -34,13 +33,14 @@ const actions = {
 
     commit("removeWriter", id);
   },
-  async updateTodo({ commit }, updWriter) {
-    const response = await axios.put(
-      `https://jsonplaceholder.typicode.com/todos/${updWriter.id}`,
-      updWriter
-    );
-
-    commit("updateWriter", response.data);
+  async updateWriter({ commit }, updWriter) {
+    http.put(`/writers/${updWriter.id}`)
+    .then(response => {
+      commit("updateWriter", response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    })
   },
 };
 
