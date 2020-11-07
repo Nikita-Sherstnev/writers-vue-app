@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const BASE_URL = "http://127.0.0.1:8080";
+import http from "../../http-common";
 
 const state = {
   writers: [],
@@ -12,17 +11,26 @@ const getters = {
 
 const actions = {
   async fetchWriters({ commit }) {
-    const response = await axios.get(`${BASE_URL}/api/writers`);
-
-    commit("setWriters", response.data);
+    http.get("/writers")
+    .then(response => {
+      commit("setWriters", response.data);
+    }).catch(e => {
+      console.log(e);
+    });
   },
   async addWriter({ commit }, data) {
-    const response = await axios.post(`${BASE_URL}/api/writers`, data);
-
-    commit("newWriter", response.data);
+    http.post("/writers", data)
+    .then(response => {
+      commit("newWriter", response.data)
+    }).catch(e => {
+      console.log(e);
+    });
   },
   async deleteWriter({ commit }, id) {
-    await axios.delete(`${BASE_URL}/api/writers/${id}`);
+    http.delete(`/writers/${id}`)
+    .catch(e => {
+      console.log(e);
+    });
 
     commit("removeWriter", id);
   },
